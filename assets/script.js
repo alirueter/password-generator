@@ -1,4 +1,8 @@
 // Script to create a random password based on criteria that the user decides
+// Reference: https://github.com/TiffanyCasey/Password-Generator/blob/master/script.js
+// Reference: https://www.w3schools.com/jsref/event_onclick.asp
+// Reference: https://www.w3schools.com/js/js_output.asp
+
 
 //place all password criteria options into arrays
 var letterLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -79,4 +83,3 @@ function createPassword() {
   //display generated password in html on webpage
   document.getElementById("password").innerHTML = randomPassword;
 }
-
