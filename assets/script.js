@@ -6,28 +6,44 @@ var letterUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "{", "}", "~"];
 
-//declaring variables
+//declaring criteria variables
+var confirmLetterLower;
+var confirmLetterUpper;
+var confirmNumber;
+var confirmSpecialChar;
 var confirmCharCount = "";
 
-//confirm with user the amount of characters they want their password to be
+
 function createPassword() {
-  var confirmCharCount = (window.prompt("How many characters long do you want your password to be? Your password can be a minimum of 8 characters and a maximum of 128 characters."));
-
-  //alert user with error message if they choose an answer within acceptable range
-  while (confirmCharCount < 8 || confirmCharCount > 128) {
-    //message to user if response is outside of acceptable range
-    window.alert("You must choose a password length between 8 and 128 characters. Please try again.");
-    var confirmCharCount = (window.prompt("How many characters long do you want your password to be? Your password can be a minimum of 8 characters and a maximum of 128 characters.")); 
-  }
-
-  //repeat back to user how many characters they choose if it falls within acceptable range
-  window.alert("Your password will be " + confirmCharCount + " characters long.");
-
   //verify with user the types of characters they want in their password
   var confirmLetterLower = (window.confirm("Press 'OK' if you want to include lowercase letters."));
   var confirmLetterUpper = (window.confirm("Press 'OK' if you want to include uppercase letters."));
   var confirmNumber = (window.confirm("Press 'OK' if you want to include numbers."));
   var confirmSpecialChar = (window.confirm("Press 'OK' if you want to include special characters."));
+
+    //create a loop that runs if the user doesn't choose any criteria, they must choose at least one
+    while (confirmLetterLower === false && confirmLetterUpper === false && confirmNumber === false && confirmSpecialChar === false) {
+      window.alert("You have to choose at least one set of criteria for your password.");
+      //confirm the password criteria with the user again
+      var confirmLetterLower = (window.confirm("Press 'OK' if you want to include lowercase letters."));
+      var confirmLetterUpper = (window.confirm("Press 'OK' if you want to include uppercase letters."));
+      var confirmNumber = (window.confirm("Press 'OK' if you want to include numbers."));
+      var confirmSpecialChar = (window.confirm("Press 'OK' if you want to include special characters."));
+    }
+
+  //ask the user how many characters long they want their password to be
+  var confirmCharCount = (window.prompt("How many characters long do you want your password to be? Your password can be a minimum of 8 characters and a maximum of 128 characters."));
+
+  //alert user with error message if they choose an answer outside the acceptable range
+  while (confirmCharCount < 8 || confirmCharCount > 128) {
+    //message to user if their response is outside of acceptable range
+    window.alert("You must choose a password length between 8 and 128 characters. Please try again.");
+    //repeat the question asking them how many characters they want in their password
+    var confirmCharCount = (window.prompt("How many characters long do you want your password to be? Your password can be a minimum of 8 characters and a maximum of 128 characters.")); 
+  }
+
+  //repeat back to user how many characters they choose if their response falls within acceptable range
+  window.alert("Your password will be " + confirmCharCount + " characters long.");
 }
 
 // Get references to the #generate element
