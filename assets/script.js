@@ -65,15 +65,19 @@ function createPassword() {
       passwordChar = passwordChar.concat(specialChar);
     }
 
-    console.log(passwordChar);
+    //display password character array in console
+    console.log(passwordChar, "password character array");
   
     //fill string with random characters
     var randomPassword = "";
 
     for (var i = 0; i < confirmCharCount; i++) {
       randomPassword = randomPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)];
-      console.log(randomPassword);
+      //display the generated password in console
+      console.log(randomPassword, "generated random password");
     }
-    
-    window.alert("Your password is " + randomPassword);
+  
+  //display generated password in html on webpage
+  document.getElementById("password").innerHTML = randomPassword;
 }
+
