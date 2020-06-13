@@ -1,4 +1,5 @@
-// Assignment code here
+// Script to create a random password based on criteria that the user decides
+
 
 //place all password criteria options into arrays
 var letterLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -44,19 +45,35 @@ function createPassword() {
 
   //repeat back to user how many characters they choose if their response falls within acceptable range
   window.alert("Your password will be " + confirmCharCount + " characters long.");
+
+  //add actions to password criteria
+  var passwordChar = [];
+
+    if (confirmLetterLower){
+      passwordChar = passwordChar.concat(letterLower);
+    }
+
+    if (confirmLetterUpper){
+      passwordChar = passwordChar.concat(letterUpper);
+    }
+
+    if (confirmNumber){
+      passwordChar = passwordChar.concat(number);
+    }
+
+    if (confirmSpecialChar){
+      passwordChar = passwordChar.concat(specialChar);
+    }
+
+    console.log(passwordChar);
+  
+    //fill string with random characters
+    var randomPassword = "";
+
+    for (var i = 0; i < confirmCharCount; i++) {
+      randomPassword = randomPassword + passwordChar[Math.floor(Math.random() * passwordChar.length)];
+      console.log(randomPassword);
+    }
+    
+    window.alert("Your password is " + randomPassword);
 }
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
